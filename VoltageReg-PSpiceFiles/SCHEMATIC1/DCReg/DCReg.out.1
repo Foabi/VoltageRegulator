@@ -1,0 +1,323 @@
+
+**** 05/22/23 10:59:24 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-DCReg"  [ c:\cadence\labhw\projectfinal\voltagereg-pspicefiles\schematic1\dcreg.sim ] 
+
+
+ ****     CIRCUIT DESCRIPTION
+
+
+******************************************************************************
+
+
+
+
+** Creating circuit file "DCReg.cir" 
+** WARNING: THIS AUTOMATICALLY GENERATED FILE MAY BE OVERWRITTEN BY SUBSEQUENT SIMULATIONS
+
+*Libraries: 
+* Profile Libraries :
+* Local Libraries :
+* From [PSPICE NETLIST] section of C:\Users\legion\AppData\Roaming\SPB_Data\cdssetup\OrCAD_PSpice\17.2.0\PSpice.ini file:
+.lib "nom.lib" 
+
+*Analysis directives: 
+.TRAN  0 .1 0 1m 
+.WCASE TRAN V([N02522]) YMAX VARY BOTH  HI 
+.OPTIONS ADVCONV
+.PROBE64 V(alias(*)) I(alias(*)) W(alias(*)) D(alias(*)) NOISE(alias(*)) 
+.INC "..\SCHEMATIC1.net" 
+
+
+
+**** INCLUDING SCHEMATIC1.net ****
+* source VOLTAGEREG
+V_V1         N00120 0  
++SIN 0 310V 50Hz 0 0 0
+R_R1         N00120 N00116 R_R1 1 TC=0,0 
+.model        R_R1 RES R=1 DEV=5% TC1=0 TC2=0
+X_TX1    N00116 0 N37066 N37475 SCHEMATIC1_TX1 
+C_Cs         0 N02456 C_Cs 15m  TC=0,0 
+.model        C_Cs CAP C=1 DEV=5% TC1=0 TC2=0 VC1=0 VC2=0
+R_R2         N08006 N02456 R_R2 1k TC=0,0 
+.model        R_R2 RES R=1 DEV=5% TC1=0 TC2=0
+X_P         N08006 N02385 N016870 POT PARAMS: SET=0 VALUE=2k
+R_R3         0 N016870 R_R3 1k TC=0,0 
+.model        R_R3 RES R=1 DEV=5% TC1=0 TC2=0
+R_Rp         N02522 N02582 R_Rp .14 TC=0,0 
+.model        R_Rp RES R=1 DEV=1% TC1=0 TC2=0
+R_Rl         0 N02522 R_Rl 100 TC=0,0 
+.model        R_Rl RES R=1 DEV=5% TC1=0 TC2=0
+X_U2         N02385 N02522 N02456 0 N02699 uA741
+D_ZD         0 N08006 D1N4744A 
+Q_Tp         N02699 N02582 N02522 Q2N3716
+Q_T1         N02456 N02699 N02582 Q2N3716
+D_D1         0 N37066 MUR110 
+D_D4         N37475 N02456 MUR110 
+D_D3         0 N37475 MUR110 
+D_D2         N37066 N02456 MUR110 
+.PARAM  r=0.5 set=0.5
+
+.subckt SCHEMATIC1_TX1 1 2 3 4  
+K_TX1         L1_TX1 L2_TX1 1
+L1_TX1         1 2 4
+L2_TX1         3 4 20m
+.ends SCHEMATIC1_TX1
+
+**** RESUMING DCReg.cir ****
+.END
+
+**** 05/22/23 10:59:24 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-DCReg"  [ c:\cadence\labhw\projectfinal\voltagereg-pspicefiles\schematic1\dcreg.sim ] 
+
+
+ ****     Diode MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               D1N4744A        MUR110          X_U2.dx         X_U2.dy         
+          IS    4.997600E-24    5.547000E-12  800.000000E-18  800.000000E-18 
+           N    1.6405                                                       
+         ISR    2.247333E-06  462.900000E-12                                 
+          NR    2.89714                                                      
+         IKF                     .01447                                      
+          BV   15.048                                                        
+         IBV     .1296                                                       
+          RS     .21797          .0201          1               1.000000E-03 
+          TT  605.000000E-09   61.660000E-09                                 
+         CJO  260.000000E-12   67.210000E-12                   10.000000E-12 
+          VJ     .46328          .75                                         
+           M     .2466           .4934                                       
+         XTI                    0                                            
+
+
+**** 05/22/23 10:59:24 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-DCReg"  [ c:\cadence\labhw\projectfinal\voltagereg-pspicefiles\schematic1\dcreg.sim ] 
+
+
+ ****     BJT MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               Q2N3716         X_U2.qx         
+               NPN             NPN             
+       LEVEL    1               1            
+          IS    2.045956E-12  800.000000E-18 
+          BF  263.48           93.75         
+          NF     .988408        1            
+         VAF  156.2455                       
+         IKF    9.89                         
+         ISE    2.026827E-12                 
+          NE    1.234354                     
+          BR    7.088558        1            
+          NR     .97022         1            
+         VAR   73.803                        
+         IKR    1.8                          
+         ISC    1.494404E-09                 
+          NC    1.515306                     
+         ISS    0               0            
+          RB   16.918                        
+         RBM     .0208                       
+         IRB     .0132                       
+          RE    2.731568E-03    0            
+          RC     .189           0            
+         CJE  825.767300E-12    0            
+         VJE     .626702         .75         
+         MJE     .383789                     
+         CJC  412.487100E-12    0            
+         VJC     .427344         .75         
+         MJC     .40638          .33         
+        XCJC    1               1            
+         CJS    0               0            
+         VJS     .75             .75         
+          FC     .844775                     
+          TF   24.140000E-09                 
+         XTF    1.833                        
+         VTF    2                            
+         ITF   13                            
+         PTF   10.80642                      
+          TR  366.657000E-09                 
+         XTB    1.7695                       
+         XTI     .415                        
+          KF    0               0            
+          AF    1               1            
+          CN    2.42            2.42         
+           D     .87             .87         
+
+
+**** 05/22/23 10:59:24 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-DCReg"  [ c:\cadence\labhw\projectfinal\voltagereg-pspicefiles\schematic1\dcreg.sim ] 
+
+
+ ****     Resistor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               R_R1            R_R2            R_R3            R_Rp            
+           R    1               1               1               1            
+
+
+               R_Rl            
+           R    1            
+
+
+**** 05/22/23 10:59:24 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-DCReg"  [ c:\cadence\labhw\projectfinal\voltagereg-pspicefiles\schematic1\dcreg.sim ] 
+
+
+ ****     Capacitor MODEL PARAMETERS
+
+
+******************************************************************************
+
+
+
+
+               C_Cs            
+           C    1            
+
+
+**** 05/22/23 10:59:24 ****** PSpice 17.2.0 (March 2016) ****** ID# 0 ********
+
+ ** Profile: "SCHEMATIC1-DCReg"  [ c:\cadence\labhw\projectfinal\voltagereg-pspicefiles\schematic1\dcreg.sim ] 
+
+
+ ****     INITIAL TRANSIENT SOLUTION       TEMPERATURE =   27.000 DEG C
+
+                      SENSITIVITY NOMINAL
+
+******************************************************************************
+
+
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00116)    0.0000 (N00120)    0.0000 (N02385)     .2615 (N02456)    1.0489     
+
+(N02522)     .2600 (N02582)     .2604 (N02699)     .7968 (N08006)     .7845     
+
+(N37066)     .5245 (N37475)     .5245 (X_U2.6)    -.0273 (X_U2.7)     .9437     
+
+(X_U2.8)     .9437 (X_U2.9)    0.0000 (N016870)     .2615                       
+
+(X_U2.10)    -.3469                   (X_U2.11)    1.0100                       
+
+(X_U2.12)    1.0086                   (X_U2.13)    -.3333                       
+
+(X_U2.14)    -.3328                   (X_U2.53)     .0489                       
+
+(X_U2.54)    1.0000                   (X_U2.90)    2.9375                       
+
+(X_U2.91)   40.0000                   (X_U2.92)  -40.0000                       
+
+(X_U2.99)     .5245                   
+
+
+
+
+    VOLTAGE SOURCE CURRENTS
+    NAME         CURRENT
+
+    V_V1         0.000E+00
+    X_U2.vb     -2.729E-07
+    X_U2.vc     -2.889E-03
+    X_U2.ve     -2.220E-12
+    X_U2.vlim    2.937E-03
+    X_U2.vlp    -3.706E-11
+    X_U2.vln    -4.294E-11
+
+    TOTAL POWER DISSIPATION   2.89E-03  WATTS
+
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+Reducing minimum delta to make the circuit converge.
+
+ERROR(ORPSIM-15138): Convergence problem in Transient Analysis at Time =  .066.
+         Time step =  288.8E-21, minimum allowable step size =  1.000E-18
+
+  These voltages failed to converge:
+
+    V(N02522)                 =    -2.900V  \     4.967V
+    V(N00116)                 =    318.41V  \    300.06V
+    V(N016870)                =     4.962V  \     4.967V
+    V(N02582)                 =   370.74mV  \     4.974V
+    V(N02699)                 =    -6.797V  \     5.592V
+    V(N37066)                 =     18.15V  \     20.76V
+    V(N37475)                 =     2.148V  \  -461.02mV
+    V(N02385)                 =     4.962V  \     4.967V
+    V(X_U2.6)                 =  -548.15KV  \   326.31uV
+    V(X_U2.7)                 =  -548.15KV  \     5.620V
+    V(X_U2.90)                =   -10.96MV  \   559.19mV
+    V(X_U2.10)                =   415.66mV  \     4.360V
+    V(X_U2.13)                =  -920.04mV  \     4.374V
+    V(X_U2.14)                =     1.778V  \     4.374V
+    V(X_U2.8)                 =  -548.15KV  \     5.620V
+
+  These supply currents failed to converge:
+
+    I(X_U2.egnd)              =    10.97KA  \  -559.63uA
+    I(X_TX1.L1_TX1)           =    -18.06A  \   296.93mA
+    I(X_TX1.L2_TX1)           =    259.57A  \  -304.13uA
+    I(V_V1)                   =     18.06A  \  -296.93mA
+    I(X_U2.vb)                =     2.334A  \    4.197nA
+    I(X_U2.vc)                =    12.37KA  \   -69.47nA
+    I(X_U2.ve)                =   -12.38KA  \   111.66nA
+    I(X_U2.vlim)              =   -10.96KA  \   559.19uA
+    I(X_U2.vlp)               =   -25.23uA  \   -39.45pA
+    I(X_U2.vln)               =    25.23uA  \   -40.56pA
+    I(X_U2.hlim)              =    21.93uA  \   -1.118pA
+
+  These devices failed to converge:
+    D_ZD      X_U2.dln  X_U2.fb   Q_Tp      Q_T1      X_U2.q1   X_U2.q2   
+
+ERROR(ORPSIM-15659): Discontinuing simulation due to convergence problem
+
+
+
+  Last node voltages tried were:
+
+ NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE     NODE   VOLTAGE
+
+
+(N00116)  318.4100 (N00120)  300.3600 (N02385)    4.9615 (N02456)   20.2950     
+
+(N02522)   -2.8999 (N02582)     .3707 (N02699)   -6.7969 (N08006)   14.9000     
+
+(N37066)   18.1480 (N37475)    2.1477 (X_U2.6)-548.2E+03 (X_U2.7)-548.1E+03     
+
+(X_U2.8)-548.1E+03 (X_U2.9)    0.0000 (N016870)    4.9615                       
+
+(X_U2.10)     .4157                   (X_U2.11)   20.2570                       
+
+(X_U2.12)   20.2580                   (X_U2.13)    -.9200                       
+
+(X_U2.14)    1.7778                   (X_U2.53)   19.2860                       
+
+(X_U2.54)    1.0000                   (X_U2.90)-10.96E+06                       
+
+(X_U2.91)   40.0000                   (X_U2.92)  -40.0000                       
+
+(X_U2.99)   10.1480                   
+
+
+**** Interrupt ****
